@@ -1,6 +1,11 @@
-x=input("введите номер файла от 0 до 3: ")
+import sys
+x=input("введите номер файла от 0 до 2: ")
+if x.isalpha() or int(x)<0 or int(x)>2:
+    print("Вы ввели несуществующий номер файла, перезапустите программу ")
+    sys.exit()
 with open(f'inmap{x}.dat', 'r') as file:
     l = file.read().splitlines()
+
     
 places = int(l[0].split()[0])
 mashtab = float(l[0].split()[1])
@@ -18,11 +23,14 @@ for i in range(places):
     
     x=distances[i]
     a = round(float(distances[i])*mashtab,1)
+    
     print("#",p," "*2,x," "*4,a)
     p+=1
     s+=a
+
 print("="*45)
 print("Total Distance:   ",s)
+
 
     
 
